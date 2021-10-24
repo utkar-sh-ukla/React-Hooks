@@ -116,7 +116,7 @@ export default HookMouse
 
 - There are multiple reasons why this can happen but the most common are that we didn’t unsubscribe to a websocket component, or this were dismount before an async operation finished.
 
-- **The useEffect hook is built in a way that if we return a function within the method, this function will execute when the component gets disassociated. This is very useful because we can use it to remove unnecessary behavior or prevent memory leaking issues.**
+**The useEffect hook is built in a way that if we return a function within the method, this function will execute when the component gets disassociated. This is very useful because we can use it to remove unnecessary behavior or prevent memory leaking issues.**
 
 ### Syntax
 ```js
