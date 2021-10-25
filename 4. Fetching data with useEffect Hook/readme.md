@@ -3,7 +3,7 @@
 ### Setup
 `npm install axios`
 
-##  👉🏻 Get Request for all Posts
+##  👉🏻 FETCH all Posts
 
 ### Folder Structure
 ```
@@ -44,7 +44,7 @@ function DataFetching() {
 export default DataFetching
 ```
 
-##  👉🏻 Get Request for single Post
+##  👉🏻 FETCH single Post Only by input
 
 ### DataFetching
 ```js
@@ -69,6 +69,50 @@ function DataFetching() {
   return(
     <div>
       <input type='text' value={id} onChange={e => setId(e.target.value)} />
+      <div>{post.title}</div>
+      {/*<ul>
+        {posts.map(post => (
+          <li key={post.id}>{post.title}</li>
+        ))}
+      </ul>*/}
+    </div>
+  ) 
+}
+
+export default DataFetching
+```
+
+##  👉🏻 FETCH single Post by giving input & button Click!
+
+### DataFetching
+```js
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
+
+function DataFetching() {
+  const [post, setPost] = useState([])
+  const [id, setId] = useState(1)
+  const [idFromButtonClick,  setIdFromButtonClick] = useState(1)
+
+  const handleClick = () => {
+    setIdFromButtonClick(id)
+  }
+
+  useEffect(() => {
+    axios.get(`https://jsonplaceholder.typicode.com/posts/${idFromButtonClick}`)
+    .then(res => {
+      console.log(res)
+      setPost(res.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }, [idFromButtonClick])
+
+  return(
+    <div>
+      <input type='text' value={id} onChange={e => setId(e.target.value)} />
+      <button type='button' value={id} onClick={handleClick} > Fetch Post </button>
       <div>{post.title}</div>
       {/*<ul>
         {posts.map(post => (
