@@ -2,7 +2,7 @@
 
 Context provides a way to pass data through the component tree without having to pass props down manually at every level.
 
-## Context
+## 👉🏻   Context
 ```
 components
     +|__ComponentC.js
@@ -82,4 +82,23 @@ function ComponentF() {
 }
 
 export default ComponentF
+```
+
+##  👉🏻  using useContext Hook
+
+### ComponentE
+```js
+import React, { useContext } from 'react'
+import ComponentF from './ComponentF'
+import { UserContext, ChannelContext } from '../App'
+
+function ComponentE() {
+
+  const user = useContext(UserContext)
+  const channel = useContext(ChannelContext)
+  return <div>  {user} - {channel}</div>
+  
+}
+
+export default ComponentE
 ```
