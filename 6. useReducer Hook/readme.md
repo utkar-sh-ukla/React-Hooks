@@ -10,7 +10,7 @@
 |useContext|context API|
 |useReducer|reducers|
 
-##  reduce vs useReducer
+##  😯  reduce vs useReducer
 
 |reduce in JavaScript|useReducer in React|
 |---|---|
