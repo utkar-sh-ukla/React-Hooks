@@ -160,3 +160,109 @@ function CounterThree() {
 
 export default CounterThree
 ```
+
+##  🎯  useReducer with useContext
+
+### Folder Structure
+```
+components
+    +|__ComponentA.js
+    +|__ComponentB.js
+    +|__ComponentD.js
+```
+
+### App
+```js
+import React, { useReducer } from 'react';
+import './App.css';
+import ComponentA from './components/ComponentA'
+import ComponentB from './components/ComponentB'
+import ComponentD from './components/ComponentD'
+
+const initialState = 0
+const reducer = (state, action) => {
+	switch (action) {
+		case 'increment':
+			return state + 1
+		case 'decrement':
+			return state - 1
+		case 'reset':
+			return initialState
+		default:
+			return state
+	}
+}
+
+export const CountContext = React.createContext()
+
+function App() {
+  const [count, dispatch] = useReducer(reducer, initialState)
+  return (
+    <CountContext.Provider value={{ countState: count, countDispatch: dispatch }}>
+    <main>
+        <ComponentA />
+				<ComponentB />
+				<ComponentD />
+    </main>
+    </CountContext.Provider>
+  );
+}
+
+export default App;
+```
+
+### ComponentA
+```js
+import React, {useContext} from 'react'
+import { CountContext } from '../App';
+
+function ComponentA() {
+  const countContext = useContext(CountContext)
+  return (
+    <div>
+      Component A {countContext.countState}
+      <button onClick={() => countContext.countDispatch('increment')}>Increment</button>
+			<button onClick={() => countContext.countDispatch('decrement')}>Decrement</button>
+			<button onClick={() => countContext.countDispatch('reset')}>Reset</button>
+    </div>
+  )
+}
+
+export default ComponentA
+```
+### ComponentB
+```js
+import React, {useContext} from 'react'
+import { CountContext } from '../App';
+
+function ComponentB() {
+  const countContext = useContext(CountContext)
+  return (
+    <div>
+      Component B {countContext.countState}
+      <button onClick={() => countContext.countDispatch('increment')}>Increment</button>
+			<button onClick={() => countContext.countDispatch('decrement')}>Decrement</button>
+			<button onClick={() => countContext.countDispatch('reset')}>Reset</button>
+    </div>
+  )
+}
+export default ComponentB
+```
+### ComponentD
+```js
+import React, {useContext} from 'react'
+import { CountContext } from '../App';
+
+function ComponentD() {
+  const countContext = useContext(CountContext)
+  return (
+    <div>
+      Component D {countContext.countState}
+      <button onClick={() => countContext.countDispatch('increment')}>Increment</button>
+			<button onClick={() => countContext.countDispatch('decrement')}>Decrement</button>
+			<button onClick={() => countContext.countDispatch('reset')}>Reset</button>
+    </div>
+  )
+}
+export default ComponentD
+```
