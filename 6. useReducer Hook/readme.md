@@ -374,3 +374,13 @@ function DataFetchingTwo() {
 
 export default DataFetchingTwo
 ```
+
+##  🎯  `useState` vs `useReducer`
+
+|Scenario|useState|useReducer|
+|---|---|---|
+|**Types of State**|Number, String, Boolean|Object or Array|
+|**Number of state transitions**|One or two|Too many|
+|**Related state transitions?**|No|Yes|
+|**Business logic**|No business logic|Complex business logic|
+|**Logic vs Global**|Local|Global|
