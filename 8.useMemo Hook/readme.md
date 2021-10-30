@@ -50,7 +50,7 @@ export default Counter
 
 While both useMemo and useCallback remember something between renders until the dependencies change, the difference is just what they remember.
 
-`useMemo` will remember the `returned value from your function`.
+-   `useMemo` will remember the `returned value from your function`.
 
-`useCallback` will remember your `actual function`.
+-   `useCallback` will remember your `actual function`.
 
