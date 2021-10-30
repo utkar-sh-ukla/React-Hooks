@@ -89,3 +89,6 @@ function Title() {
 
 export default React.memo(Title)
 ```
+### When to `useMemo` and `useCallback` ?
+
+blog_link : https://kentcdodds.com/blog/usememo-and-usecallback
