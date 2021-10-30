@@ -270,7 +270,7 @@ export default ComponentD
 
 ##  🎯  Fetching Data with useReducer
 
-##  👉🏻  data fetching using `useState`
+👉🏻  **data fetching using `useState`**
 
 ### Folder Structure
 ```
@@ -313,7 +313,7 @@ function DataFetchingOne() {
 
 export default DataFetchingOne
 ```
-##  👉🏻  data fetching using `useReducer`
+👉🏻  **data fetching using `useReducer`**
 
 ### Folder Structure
 ```
