@@ -147,3 +147,77 @@ function useCounter(initialCount = 0, value) {
 
 export default useCounter
 ```
+
+##  🎯  `useInput ` Custom Hook
+
+### Folder Structure
+```
+    src
+    |__components
+    |   +|__UserForm.js
+    |__hooks
+        +|__useInput .js
+
+```
+
+### UserForm
+```js
+import React, { useState } from 'react'
+import useInput from '../hooks/useInput';
+
+function UserForm() {
+  const [firstName, bindFirstName, resetFirstName] = useInput('')
+  const [lastName, bindLastName, resetLastName] = useInput('')
+
+  const submitHandler = e => {
+    e.preventDefault()
+    alert(`Hello ${firstName} ${lastName}`)
+    resetFirstName()
+    resetLastName()
+  }
+	return (
+		<div>
+      <form onSubmit={submitHandler}>
+				<div>
+					<label>First Name</label>
+					<input
+            type="text"
+            {...bindFirstName}
+					/>
+				</div>
+				<div>
+					<label>Last Name</label>
+					<input
+            type="text"
+            {...bindLastName}
+					/>
+        </div>
+        <button>Submit</button>
+			</form>
+		</div>
+	)
+}
+
+export default UserForm
+```
+
+### useInput
+```js
+import {useState} from 'react'
+
+function useInput(initialValue) {
+  const [value, setValue] = useState(initialValue)
+  const reset = () => {
+    setValue('')
+  }
+  const bind = {
+    value,
+    onChange: e => {
+      setValue(e.target.value)
+    }
+  }
+  return [value, bind, reset]
+}
+
+export default useInput
+```
